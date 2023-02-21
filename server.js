@@ -1,4 +1,5 @@
 var express = require('express');
+var nodemailer=require('nodemailer');
 var env = require('dotenv').config()
 var ejs = require('ejs');
 var path = require('path');

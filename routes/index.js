@@ -4,6 +4,7 @@ var User = require('../models/user');
 var Location = require ('../models/location');
 var Admin = require ('../models/admin')
 var db = require ('../server');
+var nodemailer = require('nodemailer');
 
 let {session} = require('passport');
 const { decodeBase64 } = require('bcryptjs');
@@ -271,6 +272,57 @@ router.post('/userUpdate', function (req, res, next) { //Homepage
 });
 
 
+router.post('/sendEmail', async function(req,res,next){
+	session;
+
+	User.findOne({unique_id:session.userID}).populate("friends").exec (async function(err,data){
+	
+	
+	const transporter=nodemailer.createTransport({
+		host:"smtp.mailtrap.io",
+		port:2525,
+		auth:{
+			user:"d896f2a644e174",
+			pass:"668daf60890fcc"
+		}
+	})
+	const friends=[]
+	for(let friend of data.friends){
+		friends.push(await transporter.sendMail({
+			from:`${data.email}`,
+			to:`${friend.email}`,
+			subject:"Test 1",
+			text:`Hey! the user ${data.username} sent a ping of their location of latitude : ${data.lat} and longitude : ${data.long}. The user might need help, please notify immediately as this is an emergency PING.`
+		}))
+	}
+	await Promise.all(friends)
+	// const options={
+	// 	from:,
+	// 	to:"harith@gmail.com",
+	// 	subject:"Test 1",
+	// 	text:"Location send here later"
+	// }
+ 	// 	const info= await transporter.sendMail(options);
+		res.redirect('user')
+
+		// return res.render('customer/Map.ejs',{user:data});
+		})
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* INDEX  */
 
 router.get('/data', function (req, res, next) { //Index page render
@@ -378,7 +430,10 @@ router.get('/search', async function(req,res,next){ //Search other users render
 			Location.find({username:data.username}).sort({count:-1}).limit(1).exec(function(err,data2){
 				console.log("data2");
 				console.log(data2);
+				if(data2.length>0)
 				return res.render('customer/search.ejs',{user:data,"FLatitude":data2[0].lat,"FLongitude":data2[0].long});
+				else
+				return res.render('customer/search.ejs',{user:data})
 			})
 		
 		}else{
@@ -401,20 +456,33 @@ router.get('/search', async function(req,res,next){ //Search other users render
 	
 	
 router.post('/search', function (req, res, next) { //Search other users
-
+session;
 	
 
 
 
 		if(req.body.search!="" || req.body.search != session.userID) {
-			User.findOne({username:req.body.search},function(err, data){
-				if(data) {
-					res.json({status:"success",message:"found", name:data.username, username:data.unique_id}, )
-				}
-				else {
-					res.json({status:"fail",message:"not found"})
-				}
+
+			User.findOne({unique_id:session.userID},function(err,data1){
+				let invalid=data1.friends.concat(data1.pendingFriends);
+				console.log(invalid);
+				User.findOne({username:req.body.search,unique_id:{$ne:session.userID},_id:{$nin:invalid} },function(err, data){
+					if(data) {
+						
+							res.json({status:"success",message:"found", name:data.username, username:data.unique_id})
+						
+						
+					}
+					else {
+						res.json({status:"fail",message:"not found"})
+					}
+				})
+
+
+
+
 			})
+		
 		}
 		else {
 			res.json({status:"fail",message:"not found"})
@@ -475,7 +543,7 @@ router.post("/accept", function (req,res){ //Accept button
 				User.updateOne({unique_id: session.userID}, { $push: { friends:req.body.accepted}}, (err,result) => {
 					User.updateOne({_id:req.body.accepted}, { $push: { friends:data._id}}, (err,result) => {
 						console.log(err, result)
-						res.json(result)
+						res.redirect('/search')
 					})
 				})
 			})
@@ -493,7 +561,7 @@ router.post("/reject", function (req,res){ //Reject button
 			User.updateOne({unique_id: session.userID}, { $pull: { friends:req.body.accepted}}, (err,result) => {
 				User.updateOne({_id:req.body.accepted}, { $pull: { friends:data._id}}, (err,result) => {
 					console.log(err, result)
-					res.json(result)
+					res.redirect('/request')
 				})
 			})
 		})
@@ -616,7 +684,15 @@ router.get('/adminLogout', function (req, res, next) { //logout
 });
 
 
+router.get('/adminAccount',function(req,res,next){
+	session;
+	Admin.findOne({unique_id:session.userID},function(err,data){
+		if(data){
+			return res.render('admin/adminAccount',{"username":data.username,"email":data.email})
+		}
+	})
 
+})
 
 
 // router.get('/adminHome/:id', function (req, res) {

@@ -463,13 +463,13 @@ session;
 
 		if(req.body.search!="" || req.body.search != session.userID) {
 
-			User.findOne({unique_id:session.userID},function(err,data1){
-				let invalid=data1.friends.concat(data1.pendingFriends);
+			User.findOne({unique_id:session.userID},function(err,data){
+				let invalid=data.friends.concat(data.pendingFriends);
 				console.log(invalid);
-				User.findOne({username:req.body.search,unique_id:{$ne:session.userID},_id:{$nin:invalid} },function(err, data){
-					if(data) {
+				User.findOne({username:req.body.search,unique_id:{$ne:session.userID},_id:{$nin:invalid} },function(err, data1){
+					if(data1) {
 						
-							res.json({status:"success",message:"found", name:data.username, username:data.unique_id})
+							res.json({status:"success",message:"found", name:data1.username, username:data1.unique_id})
 						
 						
 					}

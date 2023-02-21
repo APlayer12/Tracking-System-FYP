@@ -28,9 +28,8 @@
 
   </div>
   <div>
-    
     <p id="status"></p>
-
+    
   </div> 
   <% if(locals.message) {%>
 
@@ -229,9 +228,9 @@
                                                                         <div class="col-sm-6">
                                                                             <p class="m-b-10 f-w-600">Most frequent</p>
                                                                             <b>Latitude</b>
-                                                                            <h6 class="text-muted f-w-400"><%=locals.FLatitude%></h6>
+                                                                            <h6 class="text-muted f-w-400">//</h6>
                                                                             <b>Longitude</b>
-                                                                            <h6 class="text-muted f-w-400"><%=locals.FLongitude%></h6>
+                                                                            <h6 class="text-muted f-w-400">//</h6>
                                                                             
                                                                         </div>
                                                                     </div>
@@ -319,18 +318,12 @@ $( "#form2" ).submit(function(event) {
       console.log(response)
       if(response.status == "success") {
         document.getElementById('status').style.display = 'text';
-        document.getElementById("status").innerHTML = `<div style="text-align: center;>
-            <br>
-            
-           <p style="text-align:center"></p> 
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <p style="text-align:center">${response.name}</p>
-          <br>
-         
+        document.getElementById("status").innerHTML = `<p>Name: ${response.name} </p><br><p>${response.username} 
+          
+          
+          
+          </p>
+        
         <form method="post" action="/addfriend/${response.username}">
             <button type="submit">Add Friend</button>
         </form> `
@@ -339,19 +332,7 @@ $( "#form2" ).submit(function(event) {
       }
       else {
         document.getElementById('status').style.display = 'text';
-        document.getElementById("status").innerHTML = `<div style="text-align: center;>
-            <br>
-            
-           <p style="text-align:center"></p> 
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <p style="text-align:center">${response.message}</p>
-          <br>
-         
-        `
+        document.getElementById("status").innerText = response.message
       }
 
            },

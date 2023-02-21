@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Search Friends</h2>
+    <form action="/relationship" method="get">
+	    <input type="text" name="searchfriend" placeholder="username">
+	    <input type="submit" value="search">
+    </form>
+
+    <% if(locals.searched){ %>
+        <form action="/relationship" method="post">
+            <%= searched.username %>
+            <!-- <input type="hidden" name="sender" value="<%= user.username %>"> -->
+            <input type="hidden" name="recipient" value="<%= searched.username %>">
+            <input type="submit" value="Send friend request">
+        </form>
+    <% } %>
+
+
+<hr>
+</body>
+</html>

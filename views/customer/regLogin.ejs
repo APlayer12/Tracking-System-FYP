@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slide Navbar</title>
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form id="form1" method="post">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<div class="signup " style="text-align: center;">
+						<span id="check" ></span>
+					</div>
+					<input type="email" name="email" placeholder="E-mail" required="" class="form-control">
+					<input type="text" name="username" placeholder="Username" required="" class="form-control">
+					<input type="text" name="number" placeholder="Number" required="" class="form-control">
+					<input type="password" name="password" placeholder="Password" required="" class="form-control">
+					<input type="password" name="passwordConf" placeholder="Confirm Password" required="" class="form-control">
+					<button type="submit">Sign up</button>
+				</form>
+			
+			</div>
+
+			<div class="login">
+				<form method="post" action="/login" >
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="text" name="email" placeholder="E-mail" required="" class="form-control">
+					<input type="password" name="password" placeholder="Password" required="" class="form-control">
+					<button type="submit">Login</button>
+				</form>
+				<div class="login2" style="text-align: center;">
+					<a href="/forget">Forgot password?</a>
+					</div>
+			</div>
+			<div id="LangTable"><a href="/data" id="aa"></a>
+				
+	</div>
+	<% if(locals.message) {%>
+
+		<script>alert("<%=locals.message %>")</script>
+		<% } %>
+
+</body>
+
+</html>
+
+
+
+<!-- Register -->
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		$( "#form1" ).submit(function(event) {
+			event.preventDefault();
+
+			$.ajax({
+				type: 'POST',
+				url: '/regLogin',
+				data: $('#form1').serialize(),
+				dataType: "json",
+				success: function(response){
+					//alert("a");
+					//console.log(response.Success);
+
+					$('#form1')[0].reset();
+
+					document.getElementById("check").innerHTML=response.Success;
+						 //ADD THIS CODE
+						 setTimeout(function(){
+							 document.getElementById("check").innerHTML="";
+						 },3000);
+						 if (response.Success=="You are regestered,You can login now.") {
+							 document.getElementById("aa").click();
+						 };
+					 },
+					 error: function() {
+					 }
+				 })
+		});
+	});
+</script>
+
+
+

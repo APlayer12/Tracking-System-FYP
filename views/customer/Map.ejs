@@ -1,0 +1,253 @@
+<%- include ("../partials/_navBarLocation.ejs") %>
+
+<body style="background: linear-gradient(to bottom, #c22781, #8a3566, #24243e);">
+    <!-- leaflet css  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@v0.74.0/dist/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.4/dist/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+
+ <!-- <%=user%>
+
+
+<% for (let Friend of user.friends){ %>
+
+<%=Friend.username%> <br>
+<%=Friend.lat%><br>
+<%=Friend.long%><br>
+
+<%}%> --> -->
+
+<style>
+    .text-center {
+  text-align: center;
+}
+    </style>
+
+  
+  <!-- <button type="button" onclick="window.location.reload()">
+    Reload Page
+ </button> -->
+ 
+ <link rel="stylesheet" href="css/friends.css">
+ <main id="site-main">
+    <div class="container">
+       
+
+        <!-- form handling -->
+        <!-- <form action="/" method="POST"> -->
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Username</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Find Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                       
+                     <% for (let Friend of user.friends) { %> 
+                        
+                        <tr>
+                            <td><%= Friend.username %></td>
+                            <td><%= Friend.lat %></td>
+                            <td><%= Friend.long %></td>
+                            <td>
+                                <!-- <form method="get" action="/Map/<%= Friend._id %>">
+                                    <button type="submit" class="button-29" role="button">Location</button>
+                                </form> -->
+
+                                <button onclick="findFriend('<%= Friend.lat %>','<%= Friend.long %>')" class="button-29" role="button">Location</button>
+                            </td>
+                            
+                        </tr>
+                        <% } %>
+           
+
+                </tbody>
+            </table>
+            <div class="text-center">
+            <button onclick="window.location.reload();" class="button-29" role="button">Location</button>
+            </div>
+        <!-- </form> -->
+    </div>
+</main>
+
+    <div id="map"></div>
+    <!-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script> -->
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@v0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    
+
+
+
+
+
+
+<script>
+var map = L.map('map').setView([3.0733, 101.5185], 11);
+L.Control.geocoder().addTo(map);
+/* Different layers of Map */ 
+
+  //osm layer
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+   // osm.addTo(map);
+
+    //google street
+    googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+    });
+    googleStreets.addTo(map)
+
+    //google satellite
+     googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+    });
+     //googleSat.addTo(map)
+
+
+
+/*  layers of Control */ 
+
+   //layer controller
+   var baseMaps = {
+    "OSM": osm,
+    'Google Street': googleStreets,
+    "Google Satellite": googleSat
+    };
+
+    L.control.layers(baseMaps).addTo(map);
+
+
+/*  Mark */ 
+
+
+if (!navigator.geolocation) {
+            console.log("Your browser doesn't support geolocation feature!")
+        } else {
+            
+
+            // setInterval(() => {
+               
+                navigator.geolocation.watchPosition(getPosition)
+                    
+        //     }, 5000);
+         };
+        
+
+
+
+        var marker, circle, lat, long, accuracy, popup;
+       
+
+        
+        function getPosition(position) {
+            
+          
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;   
+            
+            lat=parseFloat(latitude).toFixed(5);
+            long=parseFloat(longitude).toFixed(5);
+            
+           
+
+            accuracy = position.coords.accuracy
+
+            if (marker) {
+                map.removeLayer(marker)
+            }
+
+            if (circle) {
+                map.removeLayer(circle)
+            }
+
+            marker = L.marker([lat, long]).bindPopup("You are within " + accuracy + "m of the area").openPopup();
+            
+            circle = L.circle([lat, long], { radius: accuracy })
+            popup= L.popup([lat, long],{ radius: accuracy })
+            var featureGroup = L.featureGroup([marker, circle]).addTo(map)
+
+            map.fitBounds(featureGroup.getBounds())
+
+        setInterval(() => {
+
+            $(document).ready(function(){   
+            $.ajax({
+            type: 'POST',
+            url: '/Map',
+            dataType: "json",
+            data: {
+                lat,
+                long
+            }, 
+                success: function(response){
+            
+                if (response.Success=="Location updated") {
+                document.getElementById("aa").click();res.send({"Success":"location not entered yet"});
+                    };
+                 },
+                error: function() { 
+                }
+            })
+        });
+    }, 5000);
+ 
+        }
+
+    
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+    <script>
+    function findFriend(lat,long){
+    
+         
+            if (marker) {
+                map.removeLayer(marker)
+            }
+
+            if (circle) {
+                map.removeLayer(circle)
+            }
+
+            marker = L.marker([lat, long]).bindPopup("You are within " + accuracy + "m of the area").openPopup();
+            
+            circle = L.circle([lat, long], { radius: accuracy })
+            popup= L.popup([lat, long],{ radius: accuracy })
+            var featureGroup = L.featureGroup([marker, circle]).addTo(map)
+
+            map.fitBounds(featureGroup.getBounds())
+       
+
+    }
+    </script>
+    </body>
+</html>

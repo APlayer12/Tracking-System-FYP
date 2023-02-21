@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+<form id="form2" method="post">
+<button type="submit"><i class="fa fa-search">Submit</i></button>
+</form>
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+
+var lat1= String;
+var long2=String;
+
+lat1=position.coords.latitude;
+long2=position.coords.longitude;
+window.alert(lat1);
+window.alert(long2);
+
+
+
+
+
+}
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = "User denied the request for Geolocation."
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = "Location information is unavailable."
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = "The request to get user location timed out."
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = "An unknown error occurred."
+      break;
+  }
+}
+</script>
+
+</body>
+</html>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+$( "#form2" ).submit(function(event) {
+  event.preventDefault();
+
+  $.ajax({
+    type: 'POST',
+    url: '/locationTest',
+    data: $('#form2').serialize(),
+    dataType: "json",
+    success: function(response){
+      $('#form2')[0].reset();
+      console.log(response)
+      if(response.status == "success") {
+        document.getElementById('status').style.display = 'text';
+        document.getElementById("status").innerText = response.name
+      }
+      else {
+        document.getElementById('status').style.display = 'text';
+        document.getElementById("status").innerText = response.message
+      }
+
+      // document.getElementById("check").innerHTML;
+      //        //ADD THIS CODE
+      //        setTimeout(function(){
+      //          document.getElementById("check").innerHTML="";
+      //        },3000);
+      //        if (response.status=="success") {
+      //          document.getElementById("aa").click();
+      //        };
+           },
+           error: function() {
+           }
+         })
+});
+
+});
+
+</script>

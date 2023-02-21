@@ -1,0 +1,183 @@
+
+<%- include ("../partials/_navBar.ejs") %>
+<body style="background: linear-gradient(to bottom, #c22781, #8a3566, #24243e);"
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- Automatic Slideshow Images -->
+  <div class="mySlides w3-display-container w3-center">
+    <img src="./images/marker.jpg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Example 1</h3>
+      <p><b>Hi saya harith</b></p>   
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="./images/cyberpunk.png" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>Example 2</h3>
+      <p><b>presenting my project</b></p>    
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center" >
+    <img src="./images/clockwork orange.jpg" style="width:100%" >
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-smSall">
+      <h3>Example 3</h3>
+      <p><b>in alpha testing</b></p>    
+    </div>
+  </div>
+
+  <!-- The Band Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">THE IDEA</h2>
+    <p class="w3-opacity"><i>We love security</i></p>
+    <p class="w3-justify">Through frivolous effort, a new web application was borned that is aimed to make tracking technology more reliable and free for the public whether it is for
+		their ownself or for the ones they care the most. Using existing techology that has been spiced up a little to add more functionality as well as user comfortability, it is hoped
+	that the project itself can be of use to the mass public. With it being in alpha phase, there is much update and work to be done before the project can be considered as a great one.</p>
+    <div class="w3-row w3-padding-32">
+   
+      <div class="center">
+        <p>Harith Ismail</p>
+        <img src="./images/fookedonhonix.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+      </div>
+    
+    </div>
+  </div>
+
+  <!-- The Tour Section -->
+  <div class="w3-black" id="tour">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+      <h2 class="w3-wide w3-center">Support dearly</h2>
+      <p class="w3-opacity w3-center"><i>All help is greatly appreciated</i></p><br>
+
+   
+      <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+        <div class="w3-third w3-margin-bottom">
+          <img src="./images/patreon.png" alt="New York" style="width:100%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><a href="https://www.patreon.com" target="blank1" style="color: rgb(0, 0, 0);"><b>Patreon</b></a></p>
+           
+            <p>Patreon is a membership platform that makes it easy for creators to get paid. Benefits both creators and patrons alike in pursuit of creativity.</p>
+            
+          </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+          
+          <div class="w3-container w3-white">
+            <p><b>We strive on your projection of hospitality and kindness that you are willing to offer to us where 
+				we plan on giving back through our devotion to the project.
+			</b></p>
+            
+           
+          </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+          <img src="./images/paypal.png" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+			<p><a href="https://www.paypal.com/my/home?kid=p56012245254&gclid=Cj0KCQiAkMGcBhCSARIsAIW6d0B7K0lapnTMizif_Uysb7kQyPSUHYv_vcxufoL_JGz7uC24_Gl1gLcaAs_xEALw_wcB&gclsrc=aw.ds" target="blank1" style="color: rgb(0, 0, 0);"><b>PayPal</b></a></p>
+          
+            <p>PayPal is a payment platform with a website and a phone app that enables payments between parties through online money transfers.</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticket Modal -->
+  <div id="ticketModal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal w3-center w3-padding-32"> 
+        <span onclick="document.getElementById('ticketModal').style.display='none'" 
+       class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+        <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
+      </header>
+      <div class="w3-container">
+        <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>
+        <input class="w3-input w3-border" type="text" placeholder="How many?">
+        <p><label><i class="fa fa-user"></i> Send To</label></p>
+        <input class="w3-input w3-border" type="text" placeholder="Enter email">
+        <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>
+        <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
+        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center">CONTACT</h2>
+    <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker" style="width:30px;"></i> Johor, MY<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +6017 686 3973<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: harithismail04@gmail.com<br>
+      </div>
+      <div class="w3-col m6">
+       
+      </div>
+    </div>
+  </div>
+  
+<!-- End Page Content -->
+
+</div>
+
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 4000);    
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+function onSearch(button){
+  window.location.href="/search";
+
+}
+
+</script>
+
+</body>
+

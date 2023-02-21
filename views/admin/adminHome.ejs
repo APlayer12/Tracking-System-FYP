@@ -1,0 +1,464 @@
+
+ <!-- leaflet css  -->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@v0.74.0/dist/L.Control.Locate.min.css" />
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.4/dist/L.Control.Locate.min.css" />
+ <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+ <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 800px;
+            height: 800px;
+            margin: 5rem auto;
+           
+        }
+        /* body {font-family: "Lato", sans-serif}
+        .mySlides {display: none} */
+    </style>
+</head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+
+
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+*{margin: 0;padding: 0;box-sizing: border-box;list-style: none;font-family: 'Montserrat', sans-serif}
+body{
+    padding: 10px
+    }
+.topnav
+{
+    background-color: #ffff;overflow: hidden
+}
+.far.fa-user-circle
+{
+    font-size: 29px;color: #726f6f;padding-top: 10px
+}
+.input-10
+{
+    width: 40px;color: #4c4c96;font-weight: 600
+}
+.fas.fa-search
+{
+    display: flex;flex-direction: column;align-items: center;justify-content: center;background-color: lightsalmon;height: 100%
+}
+.topnav a
+{
+    float: left;display: block;color: #8d8b8b;font-weight: 800;font-size: 14px;text-transform: uppercase;padding: 14px 16px;text-decoration: none;border-bottom: 3px solid transparent
+}
+.topnav a:hover
+{
+    color: black;border-bottom: 3px solid red
+}
+.topnav .active
+{
+    color: black;border-bottom: 3px solid red
+}
+form.example input[type=text]
+{
+    padding: 10px;font-size: 17px;border: 1px solid grey;float: left;width: 90%;height: 36px;background: #fff
+}
+form.example input[type=text]:focus
+{
+    outline: none
+}
+form.example button
+{
+    float: left;width: 10%;height: 36px;padding: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;background: #4c4c96;color: white;font-size: 14px;border: 1px solid grey;border-left: none;cursor: pointer
+}
+
+.navbar-toggler:focus
+{
+    box-shadow: none;outline: none;border: none
+}
+::placeholder
+{
+ font-size: 10px
+}
+form.example button:hover
+{
+    background: #0b7dda
+}
+form.example::after
+{
+    content: "";clear: both;display: table
+}
+.container .table-responsive
+{
+    margin: 20px auto;overflow-x: auto
+}
+.container .table-responsive::-webkit-scrollbar
+{
+    height: 5px
+}
+.container .table-responsive::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;background-image: linear-gradient(to right, #5D7ECD, #0C91E6)
+}
+.table thead tr th
+{
+    font-size: 11px;color: #868585;padding: 10px 10px
+}
+.table tbody tr td
+{
+    font-size: 13.5px;padding: 10px 10px
+}
+#navbar
+{
+    width: 20%;background-color: #21214e !important;height: 100px;border: none
+}
+.bg-blight
+{
+    color: #7f7fee;font-weight: 600
+}
+.bg-bdark
+{
+    color: #4c4c96;font-weight: 600
+}
+#navbar a
+{
+    color: white
+}
+.fas.fa-bars
+{
+    color: white
+}
+#navbar2
+{
+    width: 80%
+}
+#navbar-items
+{
+    width: 20%;height: 920px;background-color: #4f4f8a
+}
+ul#navbar-items li
+{
+    color: #b6b5b5;padding: 15px 25px;font-weight: 600;text-transform: uppercase;font-size: 10px;display: flex;align-items: center
+}
+ul li .fas
+{
+    font-size: 16px
+}
+ul#navbar-items li:hover
+{
+    background-color: #21214e;color: white
+}
+ul li:hover .fas
+{
+    color: #f7910c
+}
+#topnavbar
+{
+    width: 80%
+}
+.fs13
+{
+    font-size: 13px
+}
+.fs14
+{
+    font-size: 18px;color: white
+}
+.fas.fa-times
+{
+    color: red
+}
+.fas.fa-check
+{
+    color: greenyellow
+}
+.example
+{
+    width: 50%
+}
+@media(max-width:780px)
+{
+    #navbar{width: 20%}
+    #topnavbar{width: 80%}
+    .text-decoration-none
+    .fs14{font-size: 10px}
+    .text-decoration-none 
+    .fs13{font-size: 9px}}
+@media(max-width:430px)
+{
+    #navbar-items, 
+    #topnavbar
+    {
+        width: 100%;height: 100%
+    }
+    #navbar-items
+    {
+        padding: 20px;margin-bottom: 30px
+    }
+    .topnav a
+    {
+        font-size: 12px;padding: 12px
+    }
+    #navbar
+    {
+        width: 100%;background-color: blue
+    }
+    .example
+    {
+        width: 100%
+    }
+    .text-decoration-none.fs14
+    {
+        font-size: 14px
+    }
+    .text-decoration-none .fs13
+    {
+        font-size: 13px
+    }
+}
+    @media(max-width:376px)
+    {#navbar-items
+        {
+            padding: 20px;margin-bottom: 30px
+        }
+        .topnav a
+        {
+            font-size: 12px;padding: 7px
+        }
+     }
+    @media(max-width:320px)
+    {
+        .topnav a
+        {font-size: 10px;padding: 4px}
+        }
+</style>
+
+
+
+
+
+<div class="px-0 bg-light">
+    <div class="d-flex">
+        <div class="d-flex align-items-center " id="navbar"> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-items" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button> <a class="text-decoration-none fs14 ps-2" href="#">ACQUIRED<span class="fs13 pe-2">.com</span></a> </div>
+        <div id="navbar2" class="d-flex justify-content-end pe-4"> <span class="far fa-user-circle "></span> </div>
+    </div>
+    <div class="d-md-flex">
+        <ul id="navbar-items" class="p-0">
+            <li> <span class="fas fa-th-list"></span> <span class="ps-3 name" style="font-size: 15px;">Dashboard</span> </li>
+            <li> <span class="fas fa-chart-line"></span> <span class="ps-3 name" style="font-size: 15px;">TRANSACTIONS</span> </li>
+            <li> <span class="fas fa-clipboard-check"></span> <span class="ps-3 name" style="font-size: 15px;">finanials</span> </li>
+            <li> <span class="fas fa-suitcase-rolling"></span> <span class="ps-3 name" style="font-size: 15px;">frauds</span> </li>
+            <li> <span class="fas fa-calendar-alt"></span> <span class="ps-3 name" style="font-size: 15px;">account</span> </li>
+            <li> <span class="fas fa-comment-alt"></span> <span class="ps-3 name" style="font-size: 15px;">reqests</span> </li>
+            <li> <span class="fas fa-store-alt"></span> <span class="ps-3 name" style="font-size: 15px;"> <a href="/adminLogout" class="w3-bar-item w3-button">Logout</a></span> </li>
+           
+        </ul>
+        <div id="topnavbar">
+            <div class="topnav mb-3">
+                <div class="d-flex px-1"> <a href="#home" class="active">merchants</a> <a href="#news">users</a> <a href="#contact">company<span class="px-1">&</span>mid</a> <a href="#contact">account</a> </div>
+            </div>
+            <div class="d-flex align-items-center mb-3 px-md-3 px-2"> <span class="text-uppercase fs13 fw-bolder pe-3">search<span class="ps-1">by</span></span>
+                <form class="example d-flex align-items-center"> <input type="text" placeholder="Type in Company Name Or Mid id" name="search"> <button type="submit"><i class="fa fa-search"></i></button> </form>
+            </div>
+            <div class="table-responsive px-2">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">USER<span>ID</span></th>
+                            <th scope="col">USERNAME</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">MOBILE<span class="ps-1">NUMBER</span></th>
+                        
+                            <th class="text-center" scope="col">LATITUDE</th>
+                            <th class="text-center" scope="col">LONGITUDE</th>
+                            <!-- <th class="text-center" scope="col">ACTION</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(locals.users){%>
+                            <% for(var i = 0; i < users.length; i++) { %>
+                        <tr>
+                            <td><span class="bg-blight"><%= i + 1 %></span></td>
+                            <td><span class="bg-bdark"><%= users[i].username %></span></span></td>
+                            <td><span class="bg-blight"><%= users[i].email %></span></td>
+                            <td><span class="bg-bdark"><%= users[i].number %></span></td>
+                           
+                            <td class="text-center px-0"><span class="bg-blight"><%= users[i].lat %></span></td>
+                            <td class="text-center"><span class="bg-blight"><%= users[i].long %></span></td>
+                          
+                            <td class="text-center" >
+                            
+                                    <button onclick="findFriend('<%= users[i].lat %>','<%= users[i].long %>')" class="button-29" role="button">Location</button>
+                             
+                        </td>
+                        </tr>
+                        <% } %>
+                    <% } %>
+                    
+                    
+                    
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex align-items-center justify-content-between px-3 mt-3">
+                
+            </div>
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+ <!-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+     crossorigin=""></script>
+ <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script> -->
+ <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+ <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@v0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+ <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+ <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+<script>
+var map = L.map('map').setView([3.0733, 101.5185], 11);
+L.Control.geocoder().addTo(map);
+/* Different layers of Map */ 
+
+//osm layer
+ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+ });
+// osm.addTo(map);
+
+ //google street
+ googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+ maxZoom: 20,
+ subdomains:['mt0','mt1','mt2','mt3']
+ });
+ googleStreets.addTo(map)
+
+ //google satellite
+  googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+ maxZoom: 20,
+ subdomains:['mt0','mt1','mt2','mt3']
+ });
+  //googleSat.addTo(map)
+
+
+
+/*  layers of Control */ 
+
+//layer controller
+var baseMaps = {
+ "OSM": osm,
+ 'Google Street': googleStreets,
+ "Google Satellite": googleSat
+ };
+
+ L.control.layers(baseMaps).addTo(map);
+
+
+/*  Mark */ 
+if (!navigator.geolocation) {
+            console.log("Your browser doesn't support geolocation feature!")
+        } else {
+            
+
+            // setInterval(() => {
+               
+                navigator.geolocation.getCurrentPosition(getPosition)
+                    
+        //     }, 5000);
+         };
+        
+
+
+
+        var marker, circle, lat, long, accuracy, popup;
+       
+
+        
+        function getPosition(position) {
+            
+          
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;   
+            
+            lat=parseFloat(latitude).toFixed(5);
+            long=parseFloat(longitude).toFixed(5);
+            
+           
+
+            accuracy = position.coords.accuracy
+
+            if (marker) {
+                map.removeLayer(marker)
+            }
+
+            if (circle) {
+                map.removeLayer(circle)
+            }
+
+            marker = L.marker([lat, long]).bindPopup("He is within " + accuracy + "m of the area").openPopup();
+            
+            circle = L.circle([lat, long], { radius: accuracy })
+            popup= L.popup([lat, long],{ radius: accuracy })
+            var featureGroup = L.featureGroup([marker, circle]).addTo(map)
+
+            map.fitBounds(featureGroup.getBounds())
+
+  
+ 
+        }
+
+</script>
+
+
+<script>
+   
+    function findFriend(lat,long){
+ 
+
+    
+    
+
+            if (marker) {
+                map.removeLayer(marker)
+            }
+
+            if (circle) {
+                map.removeLayer(circle)
+            }
+
+            marker = L.marker([lat, long]).bindPopup("You are within " + accuracy + "m of the area").openPopup();
+            
+            circle = L.circle([lat, long], { radius: accuracy })
+            popup= L.popup([lat, long],{ radius: accuracy })
+            var featureGroup = L.featureGroup([marker, circle]).addTo(map)
+
+            map.fitBounds(featureGroup.getBounds())
+       
+
+    }
+    </script>
+
+
+
+ </body>

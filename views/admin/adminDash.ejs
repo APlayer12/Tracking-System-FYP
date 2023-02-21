@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Application</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+    <!-- leaflet css  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@v0.74.0/dist/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.4/dist/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+
+    <!-- Header -->
+        <header id="header">
+            <nav>
+                <div class="container">
+                    <div class="text-center">
+                        <a href="/" class="nav-brand text-dark">User Management System</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    <!-- /Header -->
+
+
+    <!-- Main Site -->
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <a href="/add-user" class="border-shadow">
+                    <span class="text-gradient">New User <i class="fas fa-user"></i></span>
+                </a>
+            </div>
+    <!-- search bar -->
+            <div class="container">
+
+                <div class="row height d-flex justify-content-center align-items-center">
+    
+                  <div class="col-md-6">
+    
+                    <div class="form">
+                      <i class="fa fa-search"></i>
+
+                  
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+                
+              </div> 
+              <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+
+
+            <!-- form handling -->
+            <form action="/" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>@Email</th>
+                            <th>Username</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Location map</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(locals.users){%>
+                        <% for(var i = 0; i < users.length; i++) { %>
+                            <tr>
+                                <td><%= i + 1 %></td>
+                                <td><%= users[i].email %></td>
+                                <td><%= users[i].username %></td>
+                                <td><%= users[i].lat %></td>
+                                <td><%= users[i].long %></td>
+                                <td>
+                                    <button onclick="findFriend('<%= users[i].lat %>','<%= users[i].long %>')" class="button-29" role="button">Location</button>
+                                </td>
+                                  
+                            </tr>
+                            <% } %>
+                        <% } %>
+
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </main>
+
+
+
+    <script>
+    var map = L.map('map').setView([3.0733, 101.5185], 11);
+    L.Control.geocoder().addTo(map);
+
+/* Different layers of Map */ 
+
+    //osm layer
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    // osm.addTo(map);
+
+    //google street
+    googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+    });
+    googleStreets.addTo(map)
+
+       //google satellite
+       googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+    });
+     //googleSat.addTo(map)
+
+
+     
+/*  layers of Control */ 
+
+   //layer controller
+   var baseMaps = {
+    "OSM": osm,
+    'Google Street': googleStreets,
+    "Google Satellite": googleSat
+    };
+
+    L.control.layers(baseMaps).addTo(map);
+
+
+
+    /* Find location of users */
+    function findFriend(lat,long){
+    
+         
+    if (marker) {
+        map.removeLayer(marker)
+    }
+
+    if (circle) {
+        map.removeLayer(circle)
+    }
+
+    marker = L.marker([lat, long]).bindPopup("You are within " + accuracy + "m of the area").openPopup();
+    
+    circle = L.circle([lat, long], { radius: accuracy })
+    popup= L.popup([lat, long],{ radius: accuracy })
+    var featureGroup = L.featureGroup([marker, circle]).addTo(map)
+
+    map.fitBounds(featureGroup.getBounds())
+
+
+}
+
+    </script>

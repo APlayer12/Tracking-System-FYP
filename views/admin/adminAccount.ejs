@@ -1,0 +1,484 @@
+
+ <!-- leaflet css  -->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@v0.74.0/dist/L.Control.Locate.min.css" />
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.4/dist/L.Control.Locate.min.css" />
+ <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+ <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 800px;
+            height: 800px;
+            margin: 5rem auto;
+           
+        }
+        /* body {font-family: "Lato", sans-serif}
+        .mySlides {display: none} */
+    </style>
+</head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+
+
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+*{margin: 0;padding: 0;box-sizing: border-box;list-style: none;font-family: 'Montserrat', sans-serif}
+body{
+    padding: 10px
+    }
+.topnav
+{
+    background-color: #ffff;overflow: hidden
+}
+.far.fa-user-circle
+{
+    font-size: 29px;color: #726f6f;padding-top: 10px
+}
+.input-10
+{
+    width: 40px;color: #4c4c96;font-weight: 600
+}
+.fas.fa-search
+{
+    display: flex;flex-direction: column;align-items: center;justify-content: center;background-color: lightsalmon;height: 100%
+}
+.topnav a
+{
+    float: left;display: block;color: #8d8b8b;font-weight: 800;font-size: 14px;text-transform: uppercase;padding: 14px 16px;text-decoration: none;border-bottom: 3px solid transparent
+}
+.topnav a:hover
+{
+    color: black;border-bottom: 3px solid red
+}
+.topnav .active
+{
+    color: black;border-bottom: 3px solid red
+}
+form.example input[type=text]
+{
+    padding: 10px;font-size: 17px;border: 1px solid grey;float: left;width: 90%;height: 36px;background: #fff
+}
+form.example input[type=text]:focus
+{
+    outline: none
+}
+form.example button
+{
+    float: left;width: 10%;height: 36px;padding: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;background: #4c4c96;color: white;font-size: 14px;border: 1px solid grey;border-left: none;cursor: pointer
+}
+
+.navbar-toggler:focus
+{
+    box-shadow: none;outline: none;border: none
+}
+::placeholder
+{
+ font-size: 10px
+}
+form.example button:hover
+{
+    background: #0b7dda
+}
+form.example::after
+{
+    content: "";clear: both;display: table
+}
+.container .table-responsive
+{
+    margin: 20px auto;overflow-x: auto
+}
+.container .table-responsive::-webkit-scrollbar
+{
+    height: 5px
+}
+.container .table-responsive::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;background-image: linear-gradient(to right, #5D7ECD, #0C91E6)
+}
+.table thead tr th
+{
+    font-size: 11px;color: #868585;padding: 10px 10px
+}
+.table tbody tr td
+{
+    font-size: 13.5px;padding: 10px 10px
+}
+#navbar
+{
+    width: 20%;background-color: #21214e !important;height: 100px;border: none
+}
+.bg-blight
+{
+    color: #7f7fee;font-weight: 600
+}
+.bg-bdark
+{
+    color: #4c4c96;font-weight: 600
+}
+#navbar a
+{
+    color: white
+}
+.fas.fa-bars
+{
+    color: white
+}
+#navbar2
+{
+    width: 80%
+}
+#navbar-items
+{
+    width: 20%;height: 920px;background-color: #4f4f8a
+}
+ul#navbar-items li
+{
+    color: #b6b5b5;padding: 15px 25px;font-weight: 600;text-transform: uppercase;font-size: 10px;display: flex;align-items: center
+}
+ul li .fas
+{
+    font-size: 16px
+}
+ul#navbar-items li:hover
+{
+    background-color: #21214e;color: white
+}
+ul li:hover .fas
+{
+    color: #f7910c
+}
+#topnavbar
+{
+    width: 80%
+}
+.fs13
+{
+    font-size: 13px
+}
+.fs14
+{
+    font-size: 18px;color: white
+}
+.fas.fa-times
+{
+    color: red
+}
+.fas.fa-check
+{
+    color: greenyellow
+}
+.example
+{
+    width: 50%
+}
+@media(max-width:780px)
+{
+    #navbar{width: 20%}
+    #topnavbar{width: 80%}
+    .text-decoration-none
+    .fs14{font-size: 10px}
+    .text-decoration-none 
+    .fs13{font-size: 9px}}
+@media(max-width:430px)
+{
+    #navbar-items, 
+    #topnavbar
+    {
+        width: 100%;height: 100%
+    }
+    #navbar-items
+    {
+        padding: 20px;margin-bottom: 30px
+    }
+    .topnav a
+    {
+        font-size: 12px;padding: 12px
+    }
+    #navbar
+    {
+        width: 100%;background-color: blue
+    }
+    .example
+    {
+        width: 100%
+    }
+    .text-decoration-none.fs14
+    {
+        font-size: 14px
+    }
+    .text-decoration-none .fs13
+    {
+        font-size: 13px
+    }
+}
+    @media(max-width:376px)
+    {#navbar-items
+        {
+            padding: 20px;margin-bottom: 30px
+        }
+        .topnav a
+        {
+            font-size: 12px;padding: 7px
+        }
+     }
+    @media(max-width:320px)
+    {
+        .topnav a
+        {font-size: 10px;padding: 4px}
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
+
+.container {
+  display: flex;
+  
+
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+  font-family: 'Baloo Paaji 2', cursive;
+}
+
+.card {
+  background-color: #692086;
+  padding: 100px;
+  height: 37rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(150, 22, 22, 0.7);
+  color: white;
+}
+
+.card__name {
+  margin-top: 15px;
+  font-size: 1.5em;
+}
+
+.card__image {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  border: 5px solid #140c22;
+  margin-top: 20px;
+  box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+}
+
+
+.draw-border {
+  box-shadow: inset 0 0 0 4px #58cdd1;
+  color: #58afd1;
+  -webkit-transition: color 0.25s 0.0833333333s;
+  transition: color 0.25s 0.0833333333s;
+  position: relative;
+}
+
+.draw-border::before,
+.draw-border::after {
+  border: 0 solid transparent;
+  box-sizing: border-box;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  width: 0rem;
+  height: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.draw-border::before {
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+}
+
+.draw-border::after {
+  border-top-width: 4px;
+  border-right-width: 4px;
+}
+
+.draw-border:hover {
+  color: #ffe593;
+}
+
+.draw-border:hover::before,
+.draw-border:hover::after {
+  border-color: #eb196e;
+  -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
+  transition: border-color 0s, width 0.25s, height 0.25s;
+  width: 100%;
+  height: 100%;
+}
+
+.draw-border:hover::before {
+  -webkit-transition-delay: 0s, 0s, 0.25s;
+  transition-delay: 0s, 0s, 0.25s;
+}
+
+.draw-border:hover::after {
+  -webkit-transition-delay: 0s, 0.25s, 0s;
+  transition-delay: 0s, 0.25s, 0s;
+}
+
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;
+  font: 700 1.2rem 'Roboto Slab', sans-serif;
+  padding: 0.75em 2em;
+  letter-spacing: 0.05rem;
+  margin: 1em;
+  width: 13rem;
+}
+
+.btn:focus {
+  outline: 2px dotted #55d7dc;
+}
+
+
+.social-icons {
+  padding: 0;
+  list-style: none;
+  margin: 1em;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin: 0.15em;
+  position: relative;
+  font-size: 1em;
+}
+
+.social-icons i {
+  color: #fff;
+  position: absolute;
+  top: 0.95em;
+  left: 0.96em;
+  transition: all 265ms ease-out;
+}
+
+.social-icons a {
+  display: inline-block;
+}
+
+.social-icons a:before {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  content: " ";
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  display: block;
+  background: linear-gradient(45deg, #ff003c, #c648c8);
+  transition: all 265ms ease-out;
+}
+
+.social-icons a:hover:before {
+  transform: scale(0);
+  transition: all 265ms ease-in;
+}
+
+.social-icons a:hover i {
+  transform: scale(2.2);
+  -ms-transform: scale(2.2);
+  -webkit-transform: scale(2.2);
+  color: #ff003c;
+  background: -webkit-linear-gradient(45deg, #ff003c, #c648c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 265ms ease-in;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  font-size: 1.2em;
+}
+
+</style>
+
+
+
+
+
+<div class="px-0 bg-light">
+    <div class="d-flex">
+        <div class="d-flex align-items-center " id="navbar"> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-items" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation"> <span class="fas fa-bars"></span> </button> <a class="text-decoration-none fs14 ps-2" href="#">ACQUIRED<span class="fs13 pe-2">.com</span></a> </div>
+        <div id="navbar2" class="d-flex justify-content-end pe-4"> <span class="far fa-user-circle "></span> </div>
+    </div>
+    <div class="d-md-flex">
+        <ul id="navbar-items" class="p-0">
+            <li> <span class="fas fa-th-list"></span> <span class="ps-3 name" style="font-size: 15px;"><a href="/adminHome" class="w3-bar-item w3-button">Dashboard</a></span> </li>
+            <li> <span class="fas fa-calendar-alt"></span> <span class="ps-3 name" style="font-size: 15px;"><a href="/adminAccount" class="w3-bar-item w3-button">Account</a></span> </li>
+            <li> <span class="fas fa-store-alt"></span> <span class="ps-3 name" style="font-size: 15px;"> <a href="/adminLogout" class="w3-bar-item w3-button">Logout</a></span> </li>
+           
+        </ul>
+        <div id="topnavbar">
+            <div class="topnav mb-3">
+
+            </div>
+           
+            
+            <div class="d-flex align-items-center justify-content-between px-3 mt-3">
+                <div class="container">
+                  
+                    <div class="card">
+                      <img src="https://lh3.googleusercontent.com/oUUiPB9sq3ACq4bUaRmo8pgvC4FUpRRrQKcGIBSOsafawZfRpF1vruFeYt6uCfL6wGDQyvOi6Ez9Bpf1Fb7APKjIyVsft7FLGR6QqdRFTiceNQBm1In9aZyrXp33cZi9pUNqjHASdA=s170-no" alt="Person" class="card__image">
+                      <p class="card__name"><%=locals.username%></p>
+                        <br>
+                      <p class="card__name"><%=locals.email%></p>
+                      <div class="grid-container">
+                  
+                  
+                      </div>
+                   
+                    
+                    </div>
+                
+                  </div>
+                  
+
+
+            </div>
+         
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </body>

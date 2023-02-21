@@ -78,7 +78,10 @@
                  
             </div>
         </div>
-      
+        <% if(locals.message) {%>
+
+            <script>alert("<%=locals.message %>")</script>
+            <% } %>
     </div>
 </div>
 </div>

@@ -192,22 +192,7 @@ router.get('/userUpdate', function (req, res, next) { //Homepage
 			let validemail = false
 			let validusername = false
 
-			// if(!User.findOne({email:req.body.email})){
-			// 	validemail=true;
-			// 	data.email = req.body.email;
-			// 	res.send({"Success":"Changed"});	
-			// }else{
-			// 	console.log("email already exists")
-			// 	res.send({"Success":"Email already registered"})
-			// }
-			// if(!User.findOne({username:req.body.username})){
-			// 	validusername=true;
-			// 	data.username = req.body.username;
-			// 	res.send({"Success":"Changed"});
-			// }else{
-			// 	console.log("username already exists")
-			// 	res.send({"Success":"Username already registered"})
-			// }
+			
 			
 			return res.render('customer/userUpdate.ejs', {"name":data.username,"email":data.email, "id":data.unique_id});
 			
@@ -226,38 +211,7 @@ router.get('/userUpdate', function (req, res, next) { //Homepage
 router.post('/userUpdate', function (req, res, next) { //Homepage
 	console.log("user");
 	session;
-	// User.findOne({unique_id:session.userID},function(err,data){
-	// 	console.log("data");
-	// 	console.log(data);
-
-	// 	if(!data){
-	// 		res.redirect('/');
-	// 	}else{
-	// 		let validemail = false
-	// 		let validusername = false
-
-	// 		if(!User.findOne({email:req.body.email})){
-	// 			validemail=true;
-	// 			data.email = req.body.email;
-	// 			res.send({"Success":"Changed"});	
-	// 		}else{
-	// 			console.log("email already exists")
-	// 			res.send({"Success":"Email already registered"})
-	// 		}
-	// 		if(!User.findOne({username:req.body.username})){
-	// 			validusername=true;
-	// 			data.username = req.body.username;
-	// 			res.send({"Success":"Changed"});
-	// 		}else{
-	// 			console.log("username already exists")
-	// 			res.send({"Success":"Username already registered"})
-	// 		}
-			
-		
-			
-			
-	// 	}
-	// });
+	
 
 	User.findOne({unique_id:session.userID},function(err,data){
 		if (data){
@@ -265,6 +219,7 @@ router.post('/userUpdate', function (req, res, next) { //Homepage
 			data.username = req.body.username;
 			data.save();
 			console.log("Update success");
+			res.render('customer/userUpdate.ejs', {"name":data.username,"email":data.email, "id":data.unique_id,message:"Successfully updated"})
 		}
 	})
 	
